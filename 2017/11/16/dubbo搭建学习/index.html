@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ubuntu,dubbo," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Tai Shuai blogs" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="dubbo搭建学习1231. 简要介绍2. 下载，安装3. 部署，succes">
+<meta name="keywords" content="ubuntu,dubbo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dubbo搭建学习">
+<meta property="og:url" content="http://www.taishuai.online/2017/11/16/dubbo搭建学习/index.html">
+<meta property="og:site_name" content="Tai Shuai blogs">
+<meta property="og:description" content="dubbo搭建学习1231. 简要介绍2. 下载，安装3. 部署，succes">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-16T03:26:48.467Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="dubbo搭建学习">
+<meta name="twitter:description" content="dubbo搭建学习1231. 简要介绍2. 下载，安装3. 部署，succes">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.taishuai.online/2017/11/16/dubbo搭建学习/"/>
+
+
+
+
+
+  <title>dubbo搭建学习 | Tai Shuai blogs</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Tai Shuai blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">请叫我男神</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.taishuai.online/2017/11/16/dubbo搭建学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tai Shuai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://kuaikuai.oss-cn-beijing.aliyuncs.com/upload/f7b18a0e-52c2-4f9b-80ff-4091bff40f69.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tai Shuai blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">dubbo搭建学习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-16T11:16:01+08:00">
+                2017-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,394
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="dubbo搭建学习"><a href="#dubbo搭建学习" class="headerlink" title="dubbo搭建学习"></a>dubbo搭建学习</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1. 简要介绍</div><div class="line">2. 下载，安装</div><div class="line">3. 部署，succes</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">参考url : http://www.cnblogs.com/bookwed/p/4600480.html                -- 初识zookeeper（二）之与Dubbo-admin关联</div><div class="line">         http://blog.csdn.net/qq_32349641/article/details/52488003    --  dubbo-admin打war包实践</div><div class="line">         http://www.cnblogs.com/xmc0551/p/5825261.html                --  Dubbo——基于Zookeeper服务框架搭建及案例演示</div></pre></td></tr></table></figure>
+<h3 id="简要介绍"><a href="#简要介绍" class="headerlink" title="简要介绍"></a>简要介绍</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># zookeeper version : 3.4.6</span></div><div class="line"><span class="comment"># 我用的是阿里ECS服务器 ubuntu16.04 jdk 1.8 apache-tomcat-8.5.23</span></div><div class="line"><span class="comment"># dubbo-admin，即dubbo管理控制台，管理控制台为内部裁剪版本，开源部分主要包含：路由规则，动态配置，服务降级，访问控制，权重调整，负载均衡等管理功能，主要是用于Dubbo服务的管理，在用一个服务时，首先要搜索到这个服务。</span></div><div class="line"></div><div class="line"><span class="comment"># ***** 强调一下, dubbo 必须单独拥有一个tomcat. 例如: 我本来只有一个 apache-tomcat-7.0.64 里面跑着我自己的项目, 肯定不能删掉webapps下的项目,</span></div><div class="line"><span class="comment"># 所以我就去tomcat官网下载了一个 apache-tomcat-8.5.23, 至于多个tomcat端口冲突的问题请参考 笔记 :  一个服务器多个tomcat.</span></div></pre></td></tr></table></figure>
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div></pre></td><td class="code"><pre><div class="line">　　　　2.1</div><div class="line">　　　　　　官方提供的这个地址无法下载；</div><div class="line">　　　　　　官方地址，http://code.alibabatech.com/mvn/releases/com/alibaba/dubbo-admin/2.4.1/dubbo-admin-2.4.1.war，</div><div class="line">　　　　2.2</div><div class="line">  2.2.1 直接去作者的网盘取war包.</div><div class="line">    地址：http://pan.baidu.com/s/1c0nmZG8，提取码：uvvb</div><div class="line"></div><div class="line">  2.2.2 自己打包war包.</div><div class="line"></div><div class="line">    A. 如果服务器没有maven, 请参考当前目录下的 maven安装</div><div class="line"></div><div class="line">       <span class="comment"># 因为我找不到我服务器 maven 的环境变量, 但是还能用所以就不知道下面该怎么配置maven 环境变量, 请大家去百度.</span></div><div class="line"></div><div class="line">    B. 如果服务器没有maven, 请参考当前目录下的 git安装</div><div class="line"></div><div class="line">    C. 如果git maven 都有, 下载编译dubbo项目.</div><div class="line"></div><div class="line">       <span class="comment"># 下载dubbo源码</span></div><div class="line">       git <span class="built_in">clone</span> https://github.com/alibaba/dubbo.git</div><div class="line"></div><div class="line">       <span class="comment"># 进入dubbo目录.</span></div><div class="line">       <span class="built_in">cd</span> dubbo/</div><div class="line"></div><div class="line">       <span class="comment"># 来尝试编译一下dubbo（并将dubbo的jar安装到本地maven库）</span></div><div class="line">       mvn install -Dmaven.test.skip=<span class="literal">true</span></div><div class="line"></div><div class="line">       <span class="comment"># 注意：如果用的公司的私服，修改settings切换到maven默认的远程仓库即可。这一步最好做，否侧下一步不会成功。</span></div><div class="line"></div><div class="line">    D. 打包成war包,</div><div class="line"></div><div class="line">       <span class="comment"># 把dubbo-admin打成war</span></div><div class="line">       <span class="built_in">cd</span> duboo/dubbo-admin</div><div class="line">       mvn package -Dmaven.test.skip</div><div class="line"></div><div class="line">       <span class="comment"># 从dubbo-admin/target/目录取出war包放到自己的tomcat/webapps/下即可.</span></div><div class="line">       <span class="built_in">cd</span> duboo/dubbo-admin/target</div><div class="line">       mv dubbo-admin-2.5.6.war /home/randy/tools/apache-tomcat-8.5.23/webapps/ROOT</div><div class="line"></div><div class="line">       <span class="comment"># 解压war包.</span></div><div class="line">       jar -xvf dubbo-admin-2.5.6.war</div><div class="line"></div><div class="line"></div><div class="line">    E. 如果你服务器的jdk是1.7, 请忽略以下操作, 如果是1.8及以上, 请执行以下操作 (dubbo 不支持1.8, 我在这只想说一句mmp, 找了一下午才找到解决方案)</div><div class="line"></div><div class="line">       github 的解决方案 : https://github.com/alibaba/dubbo/issues/50</div><div class="line"></div><div class="line">       A. 以下是我个人的解决方案. 参照github大神.</div><div class="line"></div><div class="line">            <span class="comment"># 1. 更改 dubbo 下的pom.xml 文件, webx的依赖改为3.1.6版.</span></div><div class="line"></div><div class="line">               &lt;webx_version&gt;3.1.6&lt;/webx_version&gt;</div><div class="line"></div><div class="line">                &lt;dependency&gt;</div><div class="line">                    &lt;groupId&gt;com.alibaba.citrus&lt;/groupId&gt;</div><div class="line">                    &lt;artifactId&gt;citrus-webx-all&lt;/artifactId&gt;</div><div class="line">                    &lt;version&gt;<span class="variable">$&#123;webx_version&#125;</span>&lt;/version&gt;</div><div class="line">                &lt;/dependency&gt;</div><div class="line"></div><div class="line">            <span class="comment"># 2. 更改 dubbo-admin 下的pom.xml 文件, 添加 velocity的依赖.</span></div><div class="line"></div><div class="line">               &lt;dependency&gt;</div><div class="line">                  &lt;groupId&gt;org.apache.velocity&lt;/groupId&gt;</div><div class="line">                  &lt;artifactId&gt;velocity&lt;/artifactId&gt;</div><div class="line">                  &lt;version&gt;1.7&lt;/version&gt;</div><div class="line">               &lt;/dependency&gt;</div><div class="line"></div><div class="line"></div><div class="line">            <span class="comment"># 3. 至此已完成所有步骤, 请执行 3. 部署 这个步骤.</span></div><div class="line">            <span class="comment"># 4. 如果参照我的方案不行, 请参照 B 方案.</span></div><div class="line">            <span class="comment"># 5. 为什么我的只有两步?</span></div><div class="line">                 是因为大神发的解决方案是15年 ---&gt; 对应15年的dubbo项目,</div><div class="line">                 我是17年搭建的 ---&gt; 对应17年的dubbo项目, 所以最新版本的dubbo 已经临时解决 spring 问题, 所以我只有两步.</div><div class="line"></div><div class="line">       B. 以下是github大神的解决方案.</div><div class="line"></div><div class="line">大神 ----&gt; stirp commented on 19 May 2015 :</div><div class="line"></div><div class="line">           我使用的是JDK 1.8.0_05, dubbo-admin版本是2.5.4-SNAPSHOT，也遇到了一样的问题。解决方案如 @ddatsh ：&lt;---- 大神</div><div class="line"></div><div class="line">           <span class="comment"># 这个是 dubbo 下的pom.xml 文件</span></div><div class="line">           1、webx的依赖改为3.1.6版；</div><div class="line"></div><div class="line">               &lt;webx_version&gt;3.1.6&lt;/webx_version&gt;</div><div class="line"></div><div class="line">               &lt;dependency&gt;</div><div class="line">                   &lt;groupId&gt;com.alibaba.citrus&lt;/groupId&gt;</div><div class="line">                   &lt;artifactId&gt;citrus-webx-all&lt;/artifactId&gt;</div><div class="line">                   &lt;version&gt;<span class="variable">$&#123;webx_version&#125;</span>&lt;/version&gt;</div><div class="line">               &lt;/dependency&gt;</div><div class="line"></div><div class="line">           <span class="comment"># 以下 2-3-4 都是 dubbo-admin 下的pom.xml 文件</span></div><div class="line">           2、添加velocity的依赖，我用了1.7；</div><div class="line"></div><div class="line">               &lt;dependency&gt;</div><div class="line">                   &lt;groupId&gt;org.apache.velocity&lt;/groupId&gt;</div><div class="line">                   &lt;artifactId&gt;velocity&lt;/artifactId&gt;</div><div class="line">                   &lt;version&gt;1.7&lt;/version&gt;</div><div class="line">               &lt;/dependency&gt;</div><div class="line"></div><div class="line">           3、对依赖项dubbo添加exclusion，避免引入旧spring</div><div class="line"></div><div class="line">               &lt;dependency&gt;</div><div class="line">                   &lt;groupId&gt;com.alibaba&lt;/groupId&gt;</div><div class="line">                   &lt;artifactId&gt;dubbo&lt;/artifactId&gt;</div><div class="line">                   &lt;version&gt;<span class="variable">$&#123;project.parent.version&#125;</span>&lt;/version&gt;</div><div class="line">                   &lt;exclusions&gt;</div><div class="line">                       &lt;exclusion&gt;</div><div class="line">                           &lt;groupId&gt;org.springframework&lt;/groupId&gt;</div><div class="line">                           &lt;artifactId&gt;spring&lt;/artifactId&gt;</div><div class="line">                       &lt;/exclusion&gt;</div><div class="line">                   &lt;/exclusions&gt;</div><div class="line">               &lt;/dependency&gt;</div><div class="line"></div><div class="line">           4、webx已有spring 3以上的依赖，因此注释掉dubbo-admin里面的spring依赖</div><div class="line"></div><div class="line">               &lt;!--&lt;dependency&gt;--&gt;</div><div class="line">                   &lt;!--&lt;groupId&gt;org.springframework&lt;/groupId&gt;--&gt;</div><div class="line">                   &lt;!--&lt;artifactId&gt;spring&lt;/artifactId&gt;--&gt;</div><div class="line">               &lt;!--&lt;/dependency&gt;--&gt;</div><div class="line"></div><div class="line">           <span class="comment"># 确定war包解压后lib目录没有spring 3 以下的依赖就行。然后运行正常了。</span></div></pre></td></tr></table></figure>
+<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">　　　　3.1 修改配置文件</div><div class="line"></div><div class="line">　　　　　　进入到WEB-INF中，编辑dubbo.properties，修改注册中心地址，这里用了zookeeper伪集群（单IP多节点）方式，zookeeper伪集群的配置，参考http://www.cnblogs.com/bookwed/p/4599829.html，配置如下：</div><div class="line"></div><div class="line"> <span class="built_in">cd</span> /home/randy/tools/apache-tomcat-8.5.23/webapps/ROOT/WEB-INF</div><div class="line"> vi dubbo.properties</div><div class="line"> dubbo.registry.address=zookeeper://127.0.0.1:2181?backup=127.0.0.1:2182,127.0.0.1:2183</div><div class="line"> dubbo.admin.root.password=root</div><div class="line"> dubbo.admin.guest.password=guest</div><div class="line"></div><div class="line">　　　　3.2 启动服务</div><div class="line"></div><div class="line">　　　　　　进入到bin目录，启动tomcat.</div><div class="line"></div><div class="line"><span class="built_in">cd</span> /home/randy/tools/apache-tomcat-8.5.23/bin</div><div class="line">./startup.sh</div><div class="line"></div><div class="line">　　　　3.3 访问duboo-admin, 我服务器有两个tomcat, dubbo用的是 tomcat-8, 端口是8081.</div><div class="line"></div><div class="line">　　　　　　输入ip地址，会提示输入用户名和密码，用户名和密码在dubbo.properties中有配置，效果如下：　</div><div class="line"> http://139.196.xxx.xxx:8081</div><div class="line"></div><div class="line"> <span class="comment"># 注意这个时候按照 dubbo.properties 里面的用户名密码是登录不进去的, 我试了半天才试对.</span></div><div class="line"> guest</div><div class="line"> guest</div><div class="line"></div><div class="line"> dubbo.properties 里面的用户名密码</div><div class="line"> root</div><div class="line"> guest</div></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">感概一下下, 自己踩过坑才知道那是多么的刻骨铭心.</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>25k纯手工笔记，坚持原创技术分享！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="http://kuaikuai.oss-cn-beijing.aliyuncs.com/upload/d23ec107-f725-4092-a9a0-5f0889a7fa69.jpg" alt="Tai Shuai 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="http://kuaikuai.oss-cn-beijing.aliyuncs.com/upload/cf777c1d-b1c3-4eee-845d-1014f550e0aa.jpg" alt="Tai Shuai 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ubuntu/" rel="tag"># ubuntu</a>
+          
+            <a href="/tags/dubbo/" rel="tag"># dubbo</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/16/flume学习/" rel="next" title="flume学习">
+                <i class="fa fa-chevron-left"></i> flume学习
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/16/git安装/" rel="prev" title="git安装">
+                git安装 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://kuaikuai.oss-cn-beijing.aliyuncs.com/upload/f7b18a0e-52c2-4f9b-80ff-4091bff40f69.jpg"
+                alt="Tai Shuai" />
+            
+              <p class="site-author-name" itemprop="name">Tai Shuai</p>
+              <p class="site-description motion-element" itemprop="description">When your dreams come alive you’re unstoppable .</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/randy-zs" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.facebook.com/profile.php?id=100022216274492" target="_blank" title="Facebook">
+                    
+                      <i class="fa fa-fw fa-globe"></i>Facebook</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/taishuai1995" target="_blank" title="Twitter">
+                    
+                      <i class="fa fa-fw fa-globe"></i>Twitter</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:taishuai1995@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-globe"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://plus.google.com/u/0/" target="_blank" title="Google">
+                    
+                      <i class="fa fa-fw fa-globe"></i>Google</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.youtube.com/channel/UCeFIhLKJ7ujJ81AmbiNwejA?view_as=subscriber" target="_blank" title="YouTube">
+                    
+                      <i class="fa fa-fw fa-globe"></i>YouTube</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/" target="_blank" title="微博">
+                    
+                      <i class="fa fa-fw fa-globe"></i>微博</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://douban.com/people/" target="_blank" title="豆瓣">
+                    
+                      <i class="fa fa-fw fa-globe"></i>豆瓣</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.zhihu.com/people/tai-shuai-shi-ge-zui/activities" target="_blank" title="知乎">
+                    
+                      <i class="fa fa-fw fa-globe"></i>知乎</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                推荐阅读
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.uisdc.com/" title="优设" target="_blank">优设</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.zhangxinxu.com/" title="张鑫旭" target="_blank">张鑫旭</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.alloyteam.com/nav/" title="Web前端导航" target="_blank">Web前端导航</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.36zhen.com/t?id=3448" title="前端书籍资料" target="_blank">前端书籍资料</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://ife.baidu.com/" title="百度前端技术学院" target="_blank">百度前端技术学院</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wf.uisdc.com/cn/" title="google前端开发基础" target="_blank">google前端开发基础</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#dubbo搭建学习"><span class="nav-number">1.</span> <span class="nav-text">dubbo搭建学习</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简要介绍"><span class="nav-number">2.</span> <span class="nav-text">简要介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载"><span class="nav-number">3.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署"><span class="nav-number">4.</span> <span class="nav-text">部署</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tai Shuai</span>
+
+  
+</div>
+
+<!-- 隐藏网页底部powered By Hexo / 强力驱动 
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+-->
+
+
+
+
+<div class="powered-by">
+  <i class="fa fa-user-md"></i>
+  <span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+<div class="powered-by">
+    <i class="fa fa-eye"></i>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+</div>
+
+  <span class="post-meta-divider">|</span>
+
+
+<div class="theme-info">
+  <i class="fa fa-pencil"></i>
+  <span class="post-count">博客全站共2.5k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
